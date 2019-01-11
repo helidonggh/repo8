@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./plugins/jQuery/jquery-3.3.1.min.js"></script>
+    <script>
+      // function depro() {
+      //         var checked = document.getElementById("first").checked;
+      //         var elementsByTagName = document.getElementsByTagName("input");
+      //         for(var i=0;i<elementsByTagName.length;i++){
+      //             elementsByTagName[i].checked = checked;
+      //         }
+      // }
+      function depro(obj) {
+         $("input").prop("checked",obj.checked);
+      }
+    </script>
+
+    <style>
+        td{
+            color: green;
+            border: 1px solid black;
+        }
+
+    </style>
+</head>
+<body>
+<form method="get" action="#">
+    <input type="checkbox" name="check" value="1" id="first" onclick="depro(this)"/><br/>
+    <input type="checkbox" name="check" value="2" /><br/>
+    <input type="checkbox" name="check" value="3" /><br/>
+    <input type="checkbox" name="check" value="4"/><br/>
+    <input type="submit" value="提交"/>
+</form>
+
+<div id="span">测试</div>
+<script>
+    document.write("<table align='center'>");
+    for(var i =1;i<10;i++){
+       document.write("<tr>");
+       for(var j = 1;j<=i;j++){
+           document.write("<td>"+i+"*"+j+"="+i*j+"&nbsp;&nbsp;&nbsp;</td>");
+       }
+       document.write("</tr>")
+    }
+    document.write("</table>");
+</script>
+</body>
+</html>
