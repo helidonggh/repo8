@@ -1,5 +1,6 @@
 package cn.itcast.service;
 
+import cn.itcast.domain.Permission;
 import cn.itcast.domain.Role;
 
 import java.util.List;
@@ -13,4 +14,6 @@ public interface RoleService {
     Role findById(String id);
 
     void delete(String id);
+
+    List<Permission> findPermission(String id);
 }

@@ -1,5 +1,6 @@
 package cn.itcast.dao;
 
+import cn.itcast.domain.Permission;
 import cn.itcast.domain.Role;
 import org.apache.ibatis.annotations.*;
 
@@ -36,4 +37,7 @@ public interface RoleDao {
 
     @Select("select * from role where id in (select roleId from role_permission where permissionId = #{id})")
     List<Role> findByPermissionId(String id);
+
+    @Select("select * from permission where id not in (select permissionId from role_permission where roleId = #{id})")
+    List<Permission> findPermission(String id);
 }

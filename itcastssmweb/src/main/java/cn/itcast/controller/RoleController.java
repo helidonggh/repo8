@@ -1,5 +1,6 @@
 package cn.itcast.controller;
 
+import cn.itcast.domain.Permission;
 import cn.itcast.domain.Role;
 import cn.itcast.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,5 +50,16 @@ public class RoleController {
             }
         }
         return "redirect:findAll";
+    }
+
+    @RequestMapping("/findRoleByIdAndAllPermission")
+    public ModelAndView findRoleByIdAndAllPermission(String id){
+        ModelAndView mv = new ModelAndView();
+        Role role = roleService.findById(id);
+        List<Permission> list =  roleService.findPermission(id);
+        mv.addObject("role",role);
+        mv.addObject("permissionList",list);
+        mv.setViewName("role-permission-add");
+        return mv;
     }
 }

@@ -1,6 +1,7 @@
 package cn.itcast.service.impl;
 
 import cn.itcast.dao.RoleDao;
+import cn.itcast.domain.Permission;
 import cn.itcast.domain.Role;
 import cn.itcast.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,10 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public void delete(String id) {
         roleDao.delete(id);
+    }
+
+    @Override
+    public List<Permission> findPermission(String id) {
+        return roleDao.findPermission(id);
     }
 }
