@@ -62,4 +62,10 @@ public class RoleController {
         mv.setViewName("role-permission-add");
         return mv;
     }
+
+    @RequestMapping("/addRoleToUser")
+    public String addRoleToUser(String roleId,String[] ids){
+        roleService.addRoleToUser(roleId,ids);
+        return "redirect:findAll";
+    }
 }

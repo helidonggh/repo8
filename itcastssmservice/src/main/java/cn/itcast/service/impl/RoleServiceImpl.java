@@ -38,4 +38,11 @@ public class RoleServiceImpl implements RoleService {
     public List<Permission> findPermission(String id) {
         return roleDao.findPermission(id);
     }
+
+    @Override
+    public void addRoleToUser(String roleId, String[] ids) {
+        for (int i = 0; i < ids.length; i++) {
+            roleDao.addRoleToUser(roleId,ids[i]);
+        }
+    }
 }

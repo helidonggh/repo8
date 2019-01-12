@@ -5,6 +5,7 @@ import cn.itcast.service.OrdersService;
 import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,7 +18,7 @@ public class OrdersController {
     @Autowired
     private OrdersService ordersService;
     @RequestMapping("/findAll")
-    public ModelAndView findAll(int page,int size){
+    public ModelAndView findAll(Integer page,Integer size){
         ModelAndView mv = new ModelAndView();
         List<Orders> list = ordersService.findAll(page,size);
         PageInfo pageInfo = new PageInfo(list);

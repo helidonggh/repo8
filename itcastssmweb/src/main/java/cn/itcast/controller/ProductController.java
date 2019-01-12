@@ -5,6 +5,8 @@ import cn.itcast.service.ProductService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @Controller
@@ -20,8 +23,10 @@ public class ProductController {
     @Autowired
     private ProductService productService;
     //查询所有产品
+
     @RequestMapping("/findAll")
-    public ModelAndView findAll(@RequestParam(name = "page",defaultValue = "1") int page,@RequestParam(name = "size",defaultValue = "4") int size){
+
+    public ModelAndView findAll(@RequestParam(name = "page",defaultValue = "1") Integer page,@RequestParam(name = "size",defaultValue = "4") Integer size){
         ModelAndView mv = new ModelAndView();
         List<Product> list = productService.findAll(page,size);
         PageInfo pageInfo = new PageInfo(list);

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <aside class="main-sidebar">
 	<!-- sidebar: style can be found in sidebar.less -->
@@ -11,7 +12,8 @@
 					class="img-circle" alt="User Image">
 			</div>
 			<div class="pull-left info">
-				<p>${SPRING_SECURITY_CONTEXT.authentication.principal.username}</p>
+				<p>
+				<security:authentication property="principal.username"></security:authentication></p>
 				<a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
 			</div>
 		</div>
@@ -55,7 +57,7 @@
 				</span>
 			</a>
 				<ul class="treeview-menu">
-
+				<security:authorize access="hasRole('ROLE_USER')">
 					<li id="system-setting"><a
 						href="${pageContext.request.contextPath}/product/findAll?page=1&size=4">
 							<i class="fa fa-circle-o"></i> 产品管理
@@ -64,7 +66,7 @@
 						href="${pageContext.request.contextPath}/orders/findAll?page=1&size=4"> <i
 							class="fa fa-circle-o"></i> 订单管理
 					</a></li>
-
+				</security:authorize>
 				</ul></li>
 
 		</ul>

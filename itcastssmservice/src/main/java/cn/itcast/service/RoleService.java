@@ -16,4 +16,6 @@ public interface RoleService {
     void delete(String id);
 
     List<Permission> findPermission(String id);
+
+    void addRoleToUser(String roleId, String[] ids);
 }

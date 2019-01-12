@@ -40,4 +40,7 @@ public interface RoleDao {
 
     @Select("select * from permission where id not in (select permissionId from role_permission where roleId = #{id})")
     List<Permission> findPermission(String id);
+
+    @Insert("insert into role_permission values(#{id},#{roleId})")
+    void addRoleToUser(@Param("roleId") String userId,@Param("id") String id);
 }
